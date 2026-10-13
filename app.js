@@ -73,7 +73,7 @@ app.get('/', (req, res) => {
 app.delete('/usuarios/:id', verificarAutenticacao, verificarAdmin, async (req, res) => {
   try {
     const row = await dbGet('SELECT email FROM usuarios WHERE id = ?', [req.params.id]);
-    if (row && row.email === '@bioadminmapet.com') {
+    if (row && row.email === 'admin@biomapet.com') {
       return res.json({ ok: false, erro: 'nao_pode_excluir_admin' });
     }
     await dbRun('DELETE FROM usuarios WHERE id = ?', [req.params.id]);
